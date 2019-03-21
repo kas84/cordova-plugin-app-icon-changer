@@ -53,6 +53,12 @@
     return [[UIApplication sharedApplication] supportsAlternateIcons];
 }
 
+- (NSString*) alternateIconName
+{
+    return [[UIApplication sharedApplication] alternateIconName];
+}
+
+
 - (void) suppressUserNotification
 {
   UIViewController* suppressAlertVC = [UIViewController new];
