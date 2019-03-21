@@ -9,6 +9,11 @@
   [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
+- (void) getAppIconName:(CDVInvokedUrlCommand*)command
+{
+  CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[self alternateIconName]];
+  [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
 - (void) changeIcon:(CDVInvokedUrlCommand*)command
 {
   if (![self supportsAlternateIcons]) {
@@ -19,11 +24,11 @@
   NSDictionary* options = command.arguments[0];
   NSString *iconName = options[@"iconName"];
   BOOL suppressUserNotification = (options[@"suppressUserNotification"] == nil || [options[@"suppressUserNotification"] boolValue]);
-
+  /*
   if (iconName == nil) {
     [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"The 'iconName' parameter is mandatory"] callbackId:command.callbackId];
     return;
-  }
+  }*/
 
   [[UIApplication sharedApplication] setAlternateIconName:iconName completionHandler:^(NSError *error) {
       if (error != nil) {

@@ -10,4 +10,9 @@ AppIconChanger.prototype.changeIcon = function (options, onSuccess, onFail) {
   exec(onSuccess, onFail, "AppIconChanger", "changeIcon", [options]);
 };
 
+AppIconChanger.prototype.getAppIconName = function (options, onSuccess, onFail) {
+  exec(onSuccess, onFail, "AppIconChanger", "getAppIconName", [options]);
+};
+
+
 module.exports = new AppIconChanger();
